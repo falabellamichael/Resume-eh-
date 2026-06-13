@@ -137,8 +137,8 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       gap: 1.5rem;
-      align-items: end;
-      padding: clamp(2rem, 5vw, 4.25rem) clamp(1.5rem, 5vw, 4.5rem) clamp(1.6rem, 4vw, 2.8rem);
+      align-items: center;
+      padding: clamp(2rem, 4vw, 3.25rem) clamp(1.5rem, 4.5vw, 3.85rem) clamp(1.6rem, 3.2vw, 2.35rem);
       border-bottom: 1px solid var(--line);
       background:
         linear-gradient(135deg, var(--surface), var(--surface-soft));
@@ -162,15 +162,15 @@
     }
 
     h1 {
-      max-width: 850px;
+      max-width: 760px;
       margin: 0;
-      font-size: clamp(2.55rem, 6.3vw, 5.65rem);
+      font-size: clamp(2.55rem, 5.25vw, 4.85rem);
       font-weight: 800;
       letter-spacing: -0.065em;
     }
 
     .tagline {
-      max-width: 790px;
+      max-width: 680px;
       margin: 1rem 0 0;
       color: var(--muted);
       font-size: clamp(1.05rem, 1.7vw, 1.35rem);
@@ -203,9 +203,9 @@
 
     .content {
       display: grid;
-      grid-template-columns: 315px minmax(0, 1fr);
-      gap: clamp(1.5rem, 4vw, 3.25rem);
-      padding: clamp(1.5rem, 5vw, 4.5rem);
+      grid-template-columns: 300px minmax(0, 1fr);
+      gap: clamp(1.35rem, 3.4vw, 2.6rem);
+      padding: clamp(1.45rem, 4.25vw, 3.7rem);
     }
 
     aside {
@@ -415,52 +415,105 @@
       line-height: 1.5;
     }
 
+
+
+    .sidebar-media {
+      margin-top: 0.45rem;
+    }
+
+    .media-grid {
+      display: grid;
+      gap: 0.72rem;
+    }
+
+    .media-card {
+      position: relative;
+      overflow: hidden;
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface-soft);
+      color: var(--text);
+      box-shadow: 0 12px 28px rgba(17, 24, 39, 0.06);
+    }
+
+    .media-card:hover,
+    .media-card:focus-visible {
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+
+    .media-thumb {
+      position: relative;
+      display: block;
+      background: #ffffff;
+    }
+
+    .media-thumb img {
+      display: block;
+      width: 100%;
+      height: 126px;
+      object-fit: cover;
+    }
+
+    .media-video .media-thumb img {
+      aspect-ratio: 16 / 9;
+      height: auto;
+      object-fit: cover;
+      background: #000000;
+    }
+
+    .media-certificate .media-thumb img {
+      object-fit: contain;
+      padding: 0.35rem;
+    }
+
+    .play-badge {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.54);
+      border-radius: 999px;
+      background: rgba(5, 11, 20, 0.62);
+      color: #ffffff;
+      font-size: 1.05rem;
+      line-height: 1;
+      backdrop-filter: blur(5px);
+    }
+
+    .media-caption {
+      display: block;
+      padding: 0.62rem 0.7rem 0.68rem;
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+
+    .media-caption strong,
+    .media-caption span {
+      display: block;
+    }
+
+    .media-caption strong {
+      font-weight: 850;
+      letter-spacing: -0.01em;
+    }
+
+    .media-caption span {
+      margin-top: 0.12rem;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 650;
+    }
+
     .footer-note {
       margin-top: 1.6rem;
       color: var(--quiet);
       font-size: 0.86rem;
-    }
-
-    @media (min-width: 1080px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
-        align-items: center;
-        gap: clamp(1.5rem, 3vw, 2.5rem);
-        padding: clamp(2.05rem, 3vw, 3.05rem) clamp(2rem, 4vw, 4rem) clamp(1.85rem, 2.6vw, 2.65rem);
-      }
-
-      h1 {
-        max-width: 840px;
-        font-size: clamp(3.15rem, 4vw, 4.25rem);
-        line-height: 1.03;
-        letter-spacing: -0.055em;
-      }
-
-      .tagline {
-        max-width: 680px;
-        margin-top: 0.8rem;
-        font-size: clamp(1rem, 1.15vw, 1.16rem);
-        line-height: 1.5;
-      }
-
-      .hero-card {
-        align-self: center;
-        width: min(100%, 320px);
-        min-width: 0;
-        padding: 0.95rem 1rem;
-      }
-    }
-
-    @media (min-width: 1500px) {
-      .hero {
-        padding-top: 3rem;
-        padding-bottom: 2.6rem;
-      }
-
-      h1 {
-        max-width: 880px;
-        font-size: 4.05rem;
-      }
     }
 
     @media (max-width: 860px) {
@@ -500,6 +553,18 @@
       .date {
         justify-self: start;
       }
+
+      .media-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .media-thumb img {
+        height: 108px;
+      }
+
+      .media-caption {
+        min-height: 68px;
+      }
     }
 
     @media print {
@@ -535,7 +600,8 @@
       }
 
       .toolbar,
-      .skip-link {
+      .skip-link,
+      .sidebar-media {
         display: none !important;
       }
 
@@ -566,7 +632,7 @@
       }
 
       .content {
-        grid-template-columns: 2.05in 1fr;
+        grid-template-columns: 2in 1fr;
         gap: 0.32in;
       }
 
@@ -705,30 +771,48 @@
               <li><strong>Creative Development</strong>Music performance, composition, recording, and production</li>
             </ul>
           </section>
+
+          <section class="section sidebar-media" aria-labelledby="media-heading">
+            <h2 id="media-heading">Media</h2>
+            <div class="media-grid">
+              <a class="media-card media-video" href="assets/shye-bantu-games-poster.webp" target="_blank" rel="noopener noreferrer" aria-label="Open Shye Bantu Games video still">
+                <span class="media-thumb">
+                  <img src="assets/shye-bantu-games-poster.webp" alt="Still frame from the Shye Bantu Games video project" loading="lazy" />
+                  <span class="play-badge" aria-hidden="true">▶</span>
+                </span>
+                <span class="media-caption">
+                  <strong>Video Project</strong>
+                  <span>Shye Bantu Games intro still</span>
+                </span>
+              </a>
+
+              <a class="media-card media-certificate" href="assets/whmis-certificate.webp" target="_blank" rel="noopener noreferrer" aria-label="Open WHMIS training certificate">
+                <span class="media-thumb">
+                  <img src="assets/whmis-certificate.webp" alt="WHMIS certificate of training for Michael Falabella" loading="lazy" />
+                </span>
+                <span class="media-caption">
+                  <strong>WHMIS</strong>
+                  <span>Certificate of training</span>
+                </span>
+              </a>
+
+              <a class="media-card media-certificate" href="assets/cannsell-certificate.webp" target="_blank" rel="noopener noreferrer" aria-label="Open CannSell Standard certificate">
+                <span class="media-thumb">
+                  <img src="assets/cannsell-certificate.webp" alt="CannSell Standard certificate of achievement for Michael Falabella" loading="lazy" />
+                </span>
+                <span class="media-caption">
+                  <strong>CannSell Standard</strong>
+                  <span>Certificate of achievement</span>
+                </span>
+              </a>
+            </div>
+          </section>
         </aside>
 
         <main aria-label="Resume details">
           <section class="section" aria-labelledby="summary-heading">
             <h2 id="summary-heading">Professional Summary</h2>
             <p class="summary">Multidisciplinary musician and programmer with hands-on experience building responsive web pages, digital templates, creative tools, and media-focused projects. Combines artistic discipline, technical curiosity, troubleshooting ability, and self-directed learning to turn creative ideas into clean, usable digital work. Seeking opportunities in music, programming, web development, digital media, audio production, or creative technology.</p>
-          </section>
-
-          <section class="section" aria-labelledby="highlights-heading">
-            <h2 id="highlights-heading">Highlights</h2>
-            <div class="highlights">
-              <div class="highlight">
-                <strong>Creative + Technical</strong>
-                <span>Bridges music, software, media, and experimental AI tooling.</span>
-              </div>
-              <div class="highlight">
-                <strong>Web Presentation</strong>
-                <span>Builds responsive, accessible pages with clean HTML, CSS, and JavaScript.</span>
-              </div>
-              <div class="highlight">
-                <strong>Independent Builder</strong>
-                <span>Maintains public GitHub projects and develops practical portfolio work.</span>
-              </div>
-            </div>
           </section>
 
           <section class="section" aria-labelledby="experience-heading">
