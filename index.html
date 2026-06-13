@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Resume for Michael Anthony Falabella, Musician and Programmer."
+  />
+  <meta name="author" content="Michael Anthony Falabella" />
+  <title>Michael Anthony Falabella | Resume</title>
+
+  <script>
+    /* Applies the saved theme before rendering to prevent a light/dark flash. */
+    (function () {
+      const savedTheme = localStorage.getItem("resume-theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+    })();
+  </script>
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    :root {
+      color-scheme: light;
+
+      --body-bg: #f1f3f5;
+      --resume-bg: #ffffff;
+      --text: #1f2933;
+      --muted: #5f6b7a;
+      --border: #d6dbe1;
+      --strong-border: #1f2933;
+      --chip-bg: #eef1f4;
+      --chip-border: #d8dee5;
+      --button-bg: #1f2933;
+      --button-text: #ffffff;
+      --shadow: rgba(15, 23, 42, 0.12);
+
+      --max-width: 920px;
+      --radius: 14px;
+      --section-gap: 28px;
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+
+      --body-bg: #0f1115;
+      --resume-bg: #171a21;
+      --text: #f5f7fa;
+      --muted: #b7bfcc;
+      --border: #343a46;
+      --strong-border: #f5f7fa;
+      --chip-bg: #242a35;
+      --chip-border: #3a4250;
+      --button-bg: #f5f7fa;
+      --button-text: #111827;
+      --shadow: rgba(0, 0, 0, 0.45);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--body-bg);
+      color: var(--text);
+      line-height: 1.55;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-color: var(--muted);
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      text-decoration-color: var(--text);
+    }
+
+    .page-actions {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 20;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .action-button {
+      border: 0;
+      background: var(--button-bg);
+      color: var(--button-text);
+      padding: 10px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+
+    .action-button:hover {
+      opacity: 0.9;
+    }
+
+    .action-button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid currentColor;
+      outline-offset: 3px;
+    }
+
+    .resume {
+      width: min(calc(100% - 32px), var(--max-width));
+      margin: 32px auto;
+      background: var(--resume-bg);
+      padding: clamp(28px, 5vw, 52px);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 34px var(--shadow);
+      transition: background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .header {
+      display: grid;
+      gap: 14px;
+      border-bottom: 3px solid var(--strong-border);
+      padding-bottom: 22px;
+      margin-bottom: 30px;
+    }
+
+    .name {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 42px);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .title {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 19px);
+      font-weight: 600;
+    }
+
+    .contact {
+      font-style: normal;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .contact-list li:not(:last-child)::after {
+      content: "|";
+      margin-left: 12px;
+      color: var(--border);
+    }
+
+    .section {
+      margin-bottom: var(--section-gap);
+      break-inside: avoid;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid var(--border);
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+    }
+
+    .summary {
+      margin: 0;
+      max-width: 78ch;
+    }
+
+    .item {
+      margin-bottom: 20px;
+      break-inside: avoid;
+    }
+
+    .item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: start;
+      margin-bottom: 6px;
+    }
+
+    .item-title {
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .item-subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .date {
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    ul {
+      margin: 8px 0 0 20px;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    li:last-child {
+      margin-bottom: 0;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .skill {
+      display: inline-flex;
+      align-items: center;
+      background: var(--chip-bg);
+      color: var(--text);
+      border: 1px solid var(--chip-border);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 700px) {
+      .page-actions {
+        position: static;
+        margin: 16px auto 0;
+        justify-content: center;
+      }
+
+      .resume {
+        width: calc(100% - 24px);
+        margin: 16px auto;
+        border-radius: 10px;
+      }
+
+      .item-header,
+      .details-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .date {
+        text-align: left;
+      }
+
+      .contact-list {
+        display: block;
+      }
+
+      .contact-list li {
+        margin-bottom: 4px;
+      }
+
+      .contact-list li::after {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 12mm;
+      }
+
+      :root,
+      html[data-theme="dark"] {
+        --resume-bg: #ffffff;
+        --text: #000000;
+        --muted: #444444;
+        --border: #bfbfbf;
+        --strong-border: #000000;
+        --chip-bg: #eeeeee;
+        --chip-border: #cccccc;
+      }
+
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 10.5pt;
+        line-height: 1.35;
+      }
+
+      .page-actions {
+        display: none !important;
+      }
+
+      .resume {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background: #ffffff !important;
+      }
+
+      .header {
+        margin-bottom: 20px;
+        padding-bottom: 14px;
+      }
+
+      .section {
+        margin-bottom: 18px;
+      }
+
+      .section-title {
+        margin-bottom: 9px;
+        padding-bottom: 5px;
+        font-size: 12pt;
+      }
+
+      .name {
+        font-size: 24pt;
+      }
+
+      .title {
+        font-size: 12pt;
+      }
+
+      .contact,
+      .item-subtitle,
+      .date,
+      .skill,
+      .note {
+        font-size: 9.5pt;
+      }
+
+      a {
+        color: #000000;
+        text-decoration: none;
+      }
+
+      .skill {
+        border: 1px solid #cccccc;
+        background: #eeeeee;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-actions" aria-label="Page controls">
+    <button class="action-button theme-toggle" type="button" aria-pressed="false">
+      Light Mode
+    </button>
+    <button class="action-button print-button" type="button">
+      Print / Save PDF
+    </button>
+  </div>
+
+  <main class="resume" aria-label="Resume">
+    <header class="header">
+      <div>
+        <h1 class="name">Michael Anthony Falabella</h1>
+        <p class="title">Musician / Programmer</p>
+      </div>
+
+      <address class="contact">
+        <ul class="contact-list">
+          <li>[Current City, Province/Country]</li>
+          <li>[Phone Number]</li>
+          <li>
+            <a href="mailto:FalabellaMichael@gmail.com">
+              FalabellaMichael@gmail.com
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/falabellamichael"
+              target="_blank"
+              rel="me noopener noreferrer"
+            >
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.facebook.com/share/17htKAuUyQ/"
+              target="_blank"
+              rel="me noopener noreferrer"
+            >
+              Facebook
+            </a>
+          </li>
+        </ul>
+      </address>
+    </header>
+
+    <section class="section" aria-labelledby="summary-title">
+      <h2 class="section-title" id="summary-title">Professional Summary</h2>
+      <p class="summary">
+        Creative musician and programmer with a multidisciplinary background in music,
+        web development, digital media, and software experimentation. Experienced in
+        building responsive web pages with HTML, CSS, and JavaScript while developing
+        independent programming projects through GitHub. Combines artistic discipline,
+        troubleshooting ability, and self-directed learning to turn creative ideas into
+        polished digital work. Seeking opportunities in music, programming, web development,
+        digital media, audio production, or creative technology.
+      </p>
+    </section>
+
+    <section class="section" aria-labelledby="skills-title">
+      <h2 class="section-title" id="skills-title">Core Skills</h2>
+
+      <ul class="skills-list">
+        <li class="skill">Music Performance</li>
+        <li class="skill">Music Composition</li>
+        <li class="skill">Audio Editing</li>
+        <li class="skill">Music Production</li>
+        <li class="skill">HTML</li>
+        <li class="skill">CSS</li>
+        <li class="skill">JavaScript</li>
+        <li class="skill">Python</li>
+        <li class="skill">GitHub</li>
+        <li class="skill">Responsive Web Design</li>
+        <li class="skill">Digital Media</li>
+        <li class="skill">AI / LLM Experimentation</li>
+        <li class="skill">Troubleshooting</li>
+        <li class="skill">Creative Problem-Solving</li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="experience-title">
+      <h2 class="section-title" id="experience-title">Relevant Experience</h2>
+
+      <article class="item">
+        <div class="item-header">
+          <div>
+            <div class="item-title">Musician / Creative Professional</div>
+            <div class="item-subtitle">Independent Projects — [Location or Remote]</div>
+          </div>
+          <div class="date">[Year] – Present</div>
+        </div>
+
+        <ul>
+          <li>
+            Create and develop musical ideas for performance, recording, digital presentation,
+            and creative collaboration.
+          </li>
+          <li>
+            Refine creative work with attention to rhythm, tone, structure, timing, and audience impact.
+          </li>
+          <li>
+            Collaborate with musicians, creators, and project partners while adapting to different
+            styles, goals, and creative expectations.
+          </li>
+          <li>
+            Manage independent creative workflows, including planning, revision, presentation,
+            and continuous skill development.
+          </li>
+        </ul>
+      </article>
+
+      <article class="item">
+        <div class="item-header">
+          <div>
+            <div class="item-title">Programmer / Web Developer</div>
+            <div class="item-subtitle">Independent Projects — GitHub Portfolio</div>
+          </div>
+          <div class="date">[Year] – Present</div>
+        </div>
+
+        <ul>
+          <li>
+            Build responsive web pages using HTML, CSS, and JavaScript with attention to layout,
+            readability, accessibility, and user experience.
+          </li>
+          <li>
+            Develop interactive digital templates with dark/light mode, mobile-responsive layouts,
+            and print-ready formatting.
+          </li>
+          <li>
+            Experiment with AI, local language-model tools, web applications, and command-line utilities
+            through public GitHub projects.
+          </li>
+          <li>
+            Troubleshoot styling, layout, browser behavior, and project-structure issues to improve
+            usability and presentation quality.
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section" aria-labelledby="projects-title">
+      <h2 class="section-title" id="projects-title">Projects / Portfolio</h2>
+
+      <article class="item">
+        <div class="item-header">
+          <div>
+            <div class="item-title">GitHub Programming Portfolio</div>
+            <div class="item-subtitle">JavaScript, Python, AI tools, web projects</div>
+          </div>
+          <div class="date">Current</div>
+        </div>
+
+        <ul>
+          <li>
+            Maintain a public GitHub profile featuring independent software, AI, web, and media-sharing projects.
+          </li>
+          <li>
+            Selected projects include Signal-LM, Signal-Share, Simple-Signal, and related experimental tools.
+          </li>
+          <li>
+            Use GitHub to organize source code, document project ideas, and build a visible technical portfolio.
+          </li>
+        </ul>
+      </article>
+
+      <article class="item">
+        <div class="item-header">
+          <div>
+            <div class="item-title">Professional Resume Website</div>
+            <div class="item-subtitle">HTML, CSS, JavaScript</div>
+          </div>
+          <div class="date">2026</div>
+        </div>
+
+        <ul>
+          <li>
+            Designed and built a responsive resume webpage with dark/light mode, accessible structure,
+            clean section hierarchy, and print/PDF support.
+          </li>
+          <li>
+            Used semantic HTML, CSS variables, responsive layout techniques, and JavaScript theme persistence
+            to improve usability and presentation.
+          </li>
+        </ul>
+      </article>
+
+      <article class="item">
+        <div class="item-header">
+          <div>
+            <div class="item-title">Music Portfolio / Creative Work</div>
+            <div class="item-subtitle">Performance, composition, recording, or production</div>
+          </div>
+          <div class="date">[Year]</div>
+        </div>
+
+        <ul>
+          <li>
+            Develop musical material for personal, collaborative, or public presentation.
+          </li>
+          <li>
+            Organize creative work into a portfolio suitable for listeners, collaborators, clients, or employers.
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section" aria-labelledby="education-title">
+      <h2 class="section-title" id="education-title">Education</h2>
+
+      <article class="item">
+        <div class="item-header">
+          <div>
+            <div class="item-title">High School Diploma</div>
+            <div class="item-subtitle">North Park Secondary School — Brampton, Ontario, Canada</div>
+          </div>
+          <div class="date">
+            Graduated <time datetime="2008">2008</time>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section" aria-labelledby="training-title">
+      <h2 class="section-title" id="training-title">Training / Development</h2>
+
+      <ul>
+        <li>Self-directed programming practice — HTML, CSS, JavaScript, Python, GitHub</li>
+        <li>Independent creative development — music performance, composition, recording, and production</li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="additional-title">
+      <h2 class="section-title" id="additional-title">Additional Information</h2>
+
+      <div class="details-grid">
+        <ul>
+          <li>Languages: English</li>
+          <li>Availability: [Full-time / Part-time / Contract / Freelance]</li>
+          <li>Work Preference: [Remote / Hybrid / On-site]</li>
+        </ul>
+
+        <ul>
+          <li>Interests: Music technology, software development, digital media, creative production</li>
+          <li>Tools: GitHub, code editor, browser developer tools, [music software / instruments]</li>
+          <li>References: Available upon request</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const themeButton = document.querySelector(".theme-toggle");
+    const printButton = document.querySelector(".print-button");
+
+    function updateThemeButton() {
+      const isDark = root.dataset.theme === "dark";
+      themeButton.textContent = isDark ? "Light Mode" : "Dark Mode";
+      themeButton.setAttribute("aria-pressed", String(isDark));
+    }
+
+    function toggleTheme() {
+      const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+      root.dataset.theme = nextTheme;
+      localStorage.setItem("resume-theme", nextTheme);
+      updateThemeButton();
+    }
+
+    themeButton.addEventListener("click", toggleTheme);
+
+    printButton.addEventListener("click", function () {
+      window.print();
+    });
+
+    updateThemeButton();
+  </script>
+</body>
+</html>
