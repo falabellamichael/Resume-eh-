@@ -266,6 +266,8 @@ h2::after {
   color: var(--text);
   font-size: 0.93rem;
   font-weight: 650;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .contact-list svg {
@@ -656,6 +658,14 @@ h3 {
     break-inside: avoid;
     box-shadow: none;
     background: #ffffff !important;
+  }
+
+  .contact-list a,
+  .contact-list span {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    min-height: 0 !important;
   }
 
   .item {
